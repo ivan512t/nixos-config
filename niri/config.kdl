@@ -87,7 +87,7 @@ hotkey-overlay {
 }
 
 cursor {
-    xcursor-size 36
+    xcursor-size 64
     hide-after-inactive-ms 5000
 }
 
