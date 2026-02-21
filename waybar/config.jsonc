@@ -9,7 +9,7 @@
   "modules-right": ["tray", "network", "pulseaudio", "cpu", "memory", "clock"],
 
   "niri/workspaces": {
-    "format": "{id}",
+    "format": "{name}",
     "sort-by": "number",
     "all-outputs": true,
     "active-only": false,
