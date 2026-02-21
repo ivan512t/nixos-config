@@ -50,7 +50,7 @@
     programs.bash.enable = true;
     programs.bash.loginShellInit = ''
         if [ -z "${DISPLAY:-}" ] && [ -z "${WAYLAND_DISPLAY:-}" ] && [ "$(tty)" = "/dev/tty1" ]; then
-            exec uwsm start niri
+            exec niri-session
         fi
     '';
 
@@ -67,24 +67,17 @@
     fonts.fontconfig.defaultFonts.serif = [ "Noto Serif" "Noto Serif CJK TC" ];
     fonts.fontconfig.defaultFonts.emoji = [ "Noto Color Emoji" ];
 
-    # Wayland desktop base via UWSM
+    # Wayland desktop
     programs.niri.enable = true;
     programs.niri.useNautilus = false;
     programs.thunar.enable = true;
-    programs.uwsm.enable = true;
-    programs.uwsm.waylandCompositors.niri = {
-        prettyName = "Niri";
-        comment = "Niri compositor managed by UWSM";
-        binPath = "/run/current-system/sw/bin/niri";
-    };
-    programs.waybar.enable = true;
     xdg.portal.enable = true;
     xdg.portal.xdgOpenUsePortal = true;
     xdg.portal.extraPortals = with pkgs; [
-        xdg-desktop-portal-hyprland
+        xdg-desktop-portal-gnome
         xdg-desktop-portal-gtk
     ];
-    xdg.portal.config.common.default = [ "hyprland" "gtk" ];
+    xdg.portal.config.common.default = [ "gnome" "gtk" ];
 
     # Keyring and policy agent
     services.gnome.gnome-keyring.enable = true;
@@ -139,8 +132,12 @@
         waybar
         mako
         swaybg
+        fuzzel
+        swaylock
         foot
         firefox
+        xwayland-satellite
+        wl-clipboard
         libnotify
         pavucontrol
         impala
