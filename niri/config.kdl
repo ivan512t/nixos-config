@@ -21,6 +21,7 @@ input {
     }
 
     mouse {
+        accel-speed 0.0
         accel-profile "flat"
     }
 
@@ -37,6 +38,14 @@ output "DP-3" {
     mode "3840x2160@143.999"
     scale 2
 }
+
+// ─── Persistent Workspaces ───────────────────────────────────────────────────
+// Named workspaces always exist, even when empty.
+workspace "1"
+workspace "2"
+workspace "3"
+workspace "4"
+workspace "5"
 
 // ─── Layout ──────────────────────────────────────────────────────────────────
 
@@ -78,7 +87,13 @@ hotkey-overlay {
 }
 
 cursor {
+    xcursor-size 36
     hide-after-inactive-ms 5000
+}
+
+// ─── Animations ───────────────────────────────────────────────────────────────
+animations {
+    off
 }
 
 // ─── Startup ─────────────────────────────────────────────────────────────────
@@ -146,25 +161,17 @@ binds {
 
     // ── Workspaces ────────────────────────────────────────────────────────────
 
-    Mod+1 { focus-workspace 1; }
-    Mod+2 { focus-workspace 2; }
-    Mod+3 { focus-workspace 3; }
-    Mod+4 { focus-workspace 4; }
-    Mod+5 { focus-workspace 5; }
-    Mod+6 { focus-workspace 6; }
-    Mod+7 { focus-workspace 7; }
-    Mod+8 { focus-workspace 8; }
-    Mod+9 { focus-workspace 9; }
+    Mod+1 { focus-workspace "1"; }
+    Mod+2 { focus-workspace "2"; }
+    Mod+3 { focus-workspace "3"; }
+    Mod+4 { focus-workspace "4"; }
+    Mod+5 { focus-workspace "5"; }
 
-    Mod+Shift+1 { move-column-to-workspace 1; }
-    Mod+Shift+2 { move-column-to-workspace 2; }
-    Mod+Shift+3 { move-column-to-workspace 3; }
-    Mod+Shift+4 { move-column-to-workspace 4; }
-    Mod+Shift+5 { move-column-to-workspace 5; }
-    Mod+Shift+6 { move-column-to-workspace 6; }
-    Mod+Shift+7 { move-column-to-workspace 7; }
-    Mod+Shift+8 { move-column-to-workspace 8; }
-    Mod+Shift+9 { move-column-to-workspace 9; }
+    Mod+Shift+1 { move-column-to-workspace "1"; }
+    Mod+Shift+2 { move-column-to-workspace "2"; }
+    Mod+Shift+3 { move-column-to-workspace "3"; }
+    Mod+Shift+4 { move-column-to-workspace "4"; }
+    Mod+Shift+5 { move-column-to-workspace "5"; }
 
     Mod+Tab       { focus-workspace-previous; }
     Mod+Page_Down { focus-workspace-down; }
