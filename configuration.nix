@@ -44,6 +44,7 @@ in
 
     # TTY autologin without a display manager
     services.getty.autologinUser = "ivan";
+    services.getty.autologinOnce = true;
     systemd.services."getty@tty1".enable = true;
     systemd.services."getty@tty2".enable = true;
     systemd.services."getty@tty3".enable = true;
@@ -58,6 +59,19 @@ in
         shell = pkgs.bashInteractive;
     };
     programs.bash.enable = true;
+    programs.bash.shellAliases = {
+        startniri = "XDG_CURRENT_DESKTOP=niri NIXOS_OZONE_WL=1 niri-session";
+        niri-login = "XDG_CURRENT_DESKTOP=niri NIXOS_OZONE_WL=1 niri-session";
+    };
+    programs.bash.interactiveShellInit = ''
+        # Auto-start niri only for local tty1 logins.
+        if [ -z "''${DISPLAY:-}" ] \
+           && [ -z "''${WAYLAND_DISPLAY:-}" ] \
+           && [ -z "''${SSH_CONNECTION:-}" ] \
+           && [ "''${XDG_VTNR:-}" = "1" ]; then
+            exec niri-session
+        fi
+    '';
     environment.sessionVariables = {
         XCURSOR_THEME = "Adwaita";
         XCURSOR_SIZE = "96";
