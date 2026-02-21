@@ -139,6 +139,7 @@ in
 
     # Docs and tools
     documentation.man.enable = true;
+    nixpkgs.config.allowUnfree = true;
     xdg.icons.enable = true;
     xdg.icons.fallbackCursorThemes = [ "Adwaita" ];
     gtk.iconCache.enable = true;
@@ -152,6 +153,10 @@ in
         swaylock
         foot
         firefox
+        google-chrome
+        _1password-gui
+        spotify
+        helix
         xwayland-satellite
         wl-clipboard
         libnotify

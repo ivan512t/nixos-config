@@ -180,8 +180,8 @@ binds {
     Mod+Shift+Page_Up   { move-column-to-workspace-up; }
 
     // Scroll wheel workspace / column navigation
-    Mod+WheelScrollDown  cooldown-ms=150 { focus-workspace-down; }
-    Mod+WheelScrollUp    cooldown-ms=150 { focus-workspace-up; }
+    Mod+WheelScrollDown  cooldown-ms=150 { focus-column-right; }
+    Mod+WheelScrollUp    cooldown-ms=150 { focus-column-left; }
     Mod+WheelScrollRight                 { focus-column-right; }
     Mod+WheelScrollLeft                  { focus-column-left; }
 
