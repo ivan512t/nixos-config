@@ -52,9 +52,19 @@ in
         shell = pkgs.bashInteractive;
     };
     programs.bash.enable = true;
-    programs.bash.loginShellInit = ''
-        if [ -z "''${DISPLAY:-}" ] && [ -z "''${WAYLAND_DISPLAY:-}" ] && [ "$(tty)" = "/dev/tty1" ]; then
-            exec niri-session
+    programs.bash.interactiveShellInit = ''
+        # Start niri automatically on the first local VT login.
+        if [ -z "''${NIRI_AUTO_STARTED:-}" ] \
+           && [ -z "''${DISPLAY:-}" ] \
+           && [ -z "''${WAYLAND_DISPLAY:-}" ] \
+           && [ -z "''${SSH_CONNECTION:-}" ] \
+           && { [ "''${XDG_VTNR:-}" = "1" ] || [ "$(tty 2>/dev/null)" = "/dev/tty1" ]; }; then
+            export NIRI_AUTO_STARTED=1
+            if command -v niri-session >/dev/null 2>&1; then
+                exec niri-session
+            else
+                exec niri --session
+            fi
         fi
     '';
 
