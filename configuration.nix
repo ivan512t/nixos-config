@@ -135,7 +135,12 @@ in
 
     # Docs and tools
     documentation.man.enable = true;
+    xdg.icons.enable = true;
+    xdg.icons.fallbackCursorThemes = [ "Adwaita" ];
+    gtk.iconCache.enable = true;
+    environment.pathsToLink = [ "/share/icons" ];
     environment.systemPackages = with pkgs; [
+        adwaita-icon-theme
         waybar
         mako
         swaybg
