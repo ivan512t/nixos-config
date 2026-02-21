@@ -120,6 +120,7 @@ binds {
 
     Mod+Q { close-window; }
     Mod+F { fullscreen-window; }
+    Mod+O { toggle-overview; }
 
     // Stack/unstack windows within a column
     Mod+Comma  { consume-window-into-column; }
