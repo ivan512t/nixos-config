@@ -1,9 +1,13 @@
 { config, pkgs, ... }:
 
+let
+    homeManager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz";
+in
+
 {
     imports = [
         ./hardware-configuration.nix
-        <home-manager/nixos>
+        (homeManager + "/nixos")
     ];
 
     # Bootloader: Limine + Windows chainload
