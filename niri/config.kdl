@@ -87,7 +87,8 @@ hotkey-overlay {
 }
 
 cursor {
-    xcursor-size 64
+    xcursor-theme "Adwaita"
+    xcursor-size 96
     hide-after-inactive-ms 5000
 }
 
