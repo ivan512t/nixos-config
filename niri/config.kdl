@@ -87,9 +87,6 @@ hotkey-overlay {
 }
 
 cursor {
-    xcursor-theme "Adwaita"
-    xcursor-size 96
-    hide-after-inactive-ms 5000
 }
 
 // ─── Animations ───────────────────────────────────────────────────────────────

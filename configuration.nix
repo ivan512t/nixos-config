@@ -44,6 +44,12 @@ in
 
     # TTY autologin without a display manager
     services.getty.autologinUser = "ivan";
+    systemd.services."getty@tty1".enable = true;
+    systemd.services."getty@tty2".enable = true;
+    systemd.services."getty@tty3".enable = true;
+    systemd.services."getty@tty4".enable = true;
+    systemd.services."getty@tty5".enable = true;
+    systemd.services."getty@tty6".enable = true;
 
     # User
     users.users.ivan = {
@@ -52,21 +58,10 @@ in
         shell = pkgs.bashInteractive;
     };
     programs.bash.enable = true;
-    programs.bash.interactiveShellInit = ''
-        # Start niri automatically on the first local VT login.
-        if [ -z "''${NIRI_AUTO_STARTED:-}" ] \
-           && [ -z "''${DISPLAY:-}" ] \
-           && [ -z "''${WAYLAND_DISPLAY:-}" ] \
-           && [ -z "''${SSH_CONNECTION:-}" ] \
-           && { [ "''${XDG_VTNR:-}" = "1" ] || [ "$(tty 2>/dev/null)" = "/dev/tty1" ]; }; then
-            export NIRI_AUTO_STARTED=1
-            if command -v niri-session >/dev/null 2>&1; then
-                exec niri-session
-            else
-                exec niri --session
-            fi
-        fi
-    '';
+    environment.sessionVariables = {
+        XCURSOR_THEME = "Adwaita";
+        XCURSOR_SIZE = "96";
+    };
 
     # Fonts
     fonts.packages = with pkgs; [
