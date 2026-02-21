@@ -42,8 +42,11 @@ in
     networking.networkmanager.wifi.backend = "iwd";
     networking.wireless.iwd.enable = true;
 
-    # Display manager (lemurs)
-    services.displayManager.lemurs.enable = true;
+    # Display manager (ly)
+    services.displayManager.lemurs.enable = false;
+    services.displayManager.ly.enable = true;
+    services.getty.autologinUser = null;
+    services.getty.autologinOnce = false;
     systemd.services."getty@tty1".enable = true;
     systemd.services."getty@tty2".enable = true;
     systemd.services."getty@tty3".enable = true;
@@ -62,6 +65,7 @@ in
         startniri = "XDG_CURRENT_DESKTOP=niri NIXOS_OZONE_WL=1 niri-session";
         niri-login = "XDG_CURRENT_DESKTOP=niri NIXOS_OZONE_WL=1 niri-session";
     };
+    programs.bash.interactiveShellInit = "";
     environment.sessionVariables = {
         XCURSOR_THEME = "Adwaita";
         XCURSOR_SIZE = "96";
