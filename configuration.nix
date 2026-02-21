@@ -3,6 +3,7 @@
 {
     imports = [
         ./hardware-configuration.nix
+        <home-manager/nixos>
     ];
 
     # Bootloader: Limine + Windows chainload
@@ -98,14 +99,11 @@
             RestartSec = 1;
         };
     };
-    systemd.user.tmpfiles.rules = [
-        "d %h/.config - - - -"
-        "d %h/.config/mako - - - -"
-        "d %h/.config/waybar - - - -"
-        "L+ %h/.config/mako/config - - - - /etc/nixos/mako/config"
-        "L+ %h/.config/waybar/config.jsonc - - - - /etc/nixos/waybar/config.jsonc"
-        "L+ %h/.config/waybar/style.css - - - - /etc/nixos/waybar/style.css"
-    ];
+
+    # Home Manager (user-level config and dotfiles)
+    home-manager.useGlobalPkgs = true;
+    home-manager.useUserPackages = false;
+    home-manager.users.ivan = import ./home/ivan.nix;
 
     # SSH + firewall
     services.openssh.enable = true;
@@ -138,6 +136,13 @@
     # Docs and tools
     documentation.man.enable = true;
     environment.systemPackages = with pkgs; [
+        waybar
+        mako
+        swaybg
+        foot
+        firefox
+        libnotify
+        pavucontrol
         impala
         bluetui
         wiremix
@@ -147,10 +152,6 @@
         mesa-demos
         pciutils
         libva-utils
-        swaybg
-        mako
-        libnotify
-        polkit_gnome
         vim
         curl
         wget
