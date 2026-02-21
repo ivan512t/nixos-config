@@ -94,12 +94,6 @@ animations {
     off
 }
 
-// ─── Startup ─────────────────────────────────────────────────────────────────
-
-spawn-at-startup "waybar"
-spawn-at-startup "mako"
-spawn-sh-at-startup "swaybg -m fill -i ~/pictures/wallpapers/hypr-wall.jxl"
-
 // ─── Key Bindings ─────────────────────────────────────────────────────────────
 
 binds {

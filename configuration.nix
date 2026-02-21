@@ -69,6 +69,8 @@ in
     environment.sessionVariables = {
         XCURSOR_THEME = "Adwaita";
         XCURSOR_SIZE = "96";
+        GDK_SCALE = "2";
+        GDK_DPI_SCALE = "1";
     };
 
     # Fonts
@@ -86,6 +88,13 @@ in
     # Wayland desktop
     programs.niri.enable = true;
     programs.niri.useNautilus = false;
+    programs.uwsm.enable = true;
+    programs.uwsm.waylandCompositors.niri = {
+        prettyName = "Niri";
+        comment = "Niri compositor managed by UWSM";
+        binPath = "/run/current-system/sw/bin/niri";
+        extraArgs = [ "--session" ];
+    };
     programs.thunar.enable = true;
     xdg.portal.enable = true;
     xdg.portal.xdgOpenUsePortal = true;
