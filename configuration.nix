@@ -160,6 +160,7 @@ in
         google-chrome
         _1password-gui
         spotify
+        dropbox
         helix
         xwayland-satellite
         wl-clipboard
