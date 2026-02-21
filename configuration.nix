@@ -49,7 +49,7 @@
     };
     programs.bash.enable = true;
     programs.bash.loginShellInit = ''
-        if [ -z "${DISPLAY:-}" ] && [ -z "${WAYLAND_DISPLAY:-}" ] && [ "$(tty)" = "/dev/tty1" ]; then
+        if [ -z "''${DISPLAY:-}" ] && [ -z "''${WAYLAND_DISPLAY:-}" ] && [ "$(tty)" = "/dev/tty1" ]; then
             exec niri-session
         fi
     '';
