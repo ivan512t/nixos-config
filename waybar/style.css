@@ -1,0 +1,39 @@
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: monospace;
+  font-size: 13px;
+}
+
+window#waybar {
+  background: rgba(15, 15, 15, 0.92);
+  color: #ffffff;
+}
+
+/* Make everything sit cleanly with some breathing room */
+#workspaces button,
+#network,
+#pulseaudio,
+#cpu,
+#memory,
+#clock {
+  padding: 0 10px;
+  margin: 0;
+  background: transparent; /* <-- no gray blocks */
+}
+
+/* Workspace look */
+#workspaces button {
+  color: #aaaaaa;
+}
+
+#workspaces button.active {
+  color: #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+#workspaces button.urgent {
+  color: #ff5555;
+}
+
