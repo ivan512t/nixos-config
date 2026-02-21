@@ -96,7 +96,7 @@
     # Home Manager (user-level config and dotfiles)
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = false;
-    home-manager.users.ivan = import ./home/ivan.nix;
+    home-manager.users.ivan = import ./home.nix;
 
     # SSH + firewall
     services.openssh.enable = true;
@@ -111,7 +111,6 @@
 
     # Hardware baseline
     hardware.enableRedistributableFirmware = true;
-    hardware.cpu.amd.updateMicrocode = true;
     hardware.graphics.enable = true;
     hardware.graphics.enable32Bit = true;
     hardware.bluetooth.enable = true;
